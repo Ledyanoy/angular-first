@@ -3,6 +3,8 @@
   width: 200px;
   border-radius: 5px;
   margin: 16px 0;
+  color: yellow;
+  font-size: 24px;
 }
 
 .green {
@@ -11,4 +13,18 @@
 
 .violet {
   background-color: violet;
+}
+
+.ngSwitch {
+  display: block;
+  margin: 16px 0;
+  border: 1px solid grey;
+  padding: 10px;
+  p, a{
+    display: block;
+    margin: 10px 0;
+  }
+  a{
+    cursor: pointer;
+  }
 }

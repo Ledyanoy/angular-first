@@ -620,8 +620,18 @@
     width: '200px',
     height: '200px',
     marginTop: '16px',
-    backgroundColor:backGroundToggle ? 'red' : 'blue'
+    backgroundColor:backGroundToggle ? 'red' : 'blue',
+    color: 'white',
+    fontSize: '24px'
   }">
+    ngStyle
+  </div>
+
+  <div class="random-color" [ngClass]="{
+    green: backGroundToggle,
+    violet: !backGroundToggle
+  }">
+    ngClass
 
   </div>
 
@@ -641,6 +651,55 @@
   >
   <p>{{inputValue}}</p>
   {{title}}
+
+  <div>
+    <p>ngIf</p>
+    <p *ngIf="backGroundToggle; else violetP" class="green">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, vero.
+    </p>
+    <ng-template #violetP>
+      <p class="violet">
+        Lorem ipsum dolor sit amet.
+      </p>
+    </ng-template>
+
+  </div>
+
+  <div [ngSwitch]="paragraphCase" class="ngSwitch">
+    <a (click)="paragraphCase=2" *ngSwitchCase="1">1. Вывести второй параграф</a>
+    <a (click)="paragraphCase=3" *ngSwitchCase="2">2. Вывести третий параграф</a>
+    <a (click)="paragraphCase=1" *ngSwitchCase="3">3. Вывести первый параграф</a>
+    <p *ngSwitchDefault>Директива paragraphCase пуста.</p>
+    <a *ngSwitchDefault (click)="paragraphCase=1">Нажми на меня и увидишь первый параграф</a>
+    <button (click)="paragraphCase= null">Обнулим директиву</button>
+  </div>
+
+
+  <div class="ngSwitch">
+    <p>Отрисовка элементов массива ngFor</p>
+    <ul>
+      <li *ngFor="let item of newArray; let idx = index">
+        {{idx + 1}}
+        <span>{{item}}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="ngSwitch">
+    <p>Вложенные массивы в обьектах и их отрисовка с помощю ngFor</p>
+    <ul>
+      <li *ngFor="let post of arrayWithObjects">
+        <p><strong>{{post.name}}</strong></p>
+        <p>{{post.post}}</p>
+        <ul>
+          <li *ngFor="let comment of post.comments">
+            <p><strong>{{comment.name}}</strong></p>
+            <p>{{comment.comment}}</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 
   {{number}}
 
